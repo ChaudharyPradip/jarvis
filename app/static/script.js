@@ -16,7 +16,7 @@ if (!navigator.mediaDevices.getUserMedia) {
 
 // Fetching data from api
 async function getData(message) {
-    const response = await fetch("http://localhost:8000/api/ask", {
+    const response = await fetch("https://marojarvis.herokuapp.com/api/ask", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -50,7 +50,6 @@ async function runSpeechRecognition() {
                 analyser.getByteFrequencyData(dataArray);
                 const level = Math.max.apply(null, dataArray);
                 mic.style.setProperty("--border", `${level / 5}px`);
-                console.log("recognising");
                 requestAnimationFrame(log);
             });
         } catch (err) {
